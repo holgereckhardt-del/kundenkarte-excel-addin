@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<OfficeApp xmlns="http://schemas.microsoft.com/office/appforoffice/1.1"
+           xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+           xmlns:bt="http://schemas.microsoft.com/office/officeappbasictypes/1.0"
+           xmlns:ov="http://schemas.microsoft.com/office/taskpaneappversionoverrides"
+           xsi:type="TaskPaneApp">
+  <Id>cf97b859-1c09-4d9e-b489-778e4b47ca36</Id>
+  <Version>1.0.0.0</Version>
+  <ProviderName>Holger Eckhardt</ProviderName>
+  <DefaultLocale>de-DE</DefaultLocale>
+  <DisplayName DefaultValue="Kundenkarte"/>
+  <Description DefaultValue="Zeigt den in OrderSP ausgewählten Kunden auf einer Karte."/>
+  <IconUrl DefaultValue="https://holgereckhardt-del.github.io/kundenkarte-excel-addin/assets/icon-32.png"/>
+  <HighResolutionIconUrl DefaultValue="https://holgereckhardt-del.github.io/kundenkarte-excel-addin/assets/icon-80.png"/>
+  <SupportUrl DefaultValue="https://holgereckhardt-del.github.io/kundenkarte-excel-addin/hilfe.html"/>
+  <AppDomains>
+    <AppDomain>https://www.openstreetmap.org</AppDomain>
+    <AppDomain>https://nominatim.openstreetmap.org</AppDomain>
+    <AppDomain>https://www.google.com</AppDomain>
+  </AppDomains>
+  <Hosts><Host Name="Workbook"/></Hosts>
+  <DefaultSettings>
+    <SourceLocation DefaultValue="https://holgereckhardt-del.github.io/kundenkarte-excel-addin/taskpane.html"/>
+  </DefaultSettings>
+  <Permissions>ReadDocument</Permissions>
+  <VersionOverrides xmlns="http://schemas.microsoft.com/office/taskpaneappversionoverrides" xsi:type="VersionOverridesV1_0">
+    <Requirements>
+      <bt:Sets DefaultMinVersion="1.1"><bt:Set Name="ExcelApi"/></bt:Sets>
+    </Requirements>
+    <Hosts>
+      <Host xsi:type="Workbook">
+        <DesktopFormFactor>
+          <FunctionFile resid="Commands.Url"/>
+          <ExtensionPoint xsi:type="PrimaryCommandSurface">
+            <OfficeTab id="TabHome">
+              <Group id="Kundenkarte.Group">
+                <Label resid="Group.Label"/>
+                <Icon>
+                  <bt:Image size="16" resid="Icon.16"/>
+                  <bt:Image size="32" resid="Icon.32"/>
+                  <bt:Image size="80" resid="Icon.80"/>
+                </Icon>
+                <Control xsi:type="Button" id="Kundenkarte.Open">
+                  <Label resid="Button.Label"/>
+                  <Supertip><Title resid="Button.Label"/><Description resid="Button.Description"/></Supertip>
+                  <Icon>
+                    <bt:Image size="16" resid="Icon.16"/>
+                    <bt:Image size="32" resid="Icon.32"/>
+                    <bt:Image size="80" resid="Icon.80"/>
+                  </Icon>
+                  <Action xsi:type="ShowTaskpane">
+                    <TaskpaneId>Kundenkarte.Taskpane</TaskpaneId>
+                    <SourceLocation resid="Taskpane.Url"/>
+                  </Action>
+                </Control>
+              </Group>
+            </OfficeTab>
+          </ExtensionPoint>
+        </DesktopFormFactor>
+      </Host>
+    </Hosts>
+    <Resources>
+      <bt:Images>
+        <bt:Image id="Icon.16" DefaultValue="https://holgereckhardt-del.github.io/kundenkarte-excel-addin/assets/icon-16.png"/>
+        <bt:Image id="Icon.32" DefaultValue="https://holgereckhardt-del.github.io/kundenkarte-excel-addin/assets/icon-32.png"/>
+        <bt:Image id="Icon.80" DefaultValue="https://holgereckhardt-del.github.io/kundenkarte-excel-addin/assets/icon-80.png"/>
+      </bt:Images>
+      <bt:Urls>
+        <bt:Url id="Commands.Url" DefaultValue="https://holgereckhardt-del.github.io/kundenkarte-excel-addin/commands.html"/>
+        <bt:Url id="Taskpane.Url" DefaultValue="https://holgereckhardt-del.github.io/kundenkarte-excel-addin/taskpane.html"/>
+      </bt:Urls>
+      <bt:ShortStrings>
+        <bt:String id="Group.Label" DefaultValue="Kunden"/>
+        <bt:String id="Button.Label" DefaultValue="Kundenkarte"/>
+      </bt:ShortStrings>
+      <bt:LongStrings>
+        <bt:String id="Button.Description" DefaultValue="Zeigt die Anschrift des ausgewählten Kunden auf einer Karte."/>
+      </bt:LongStrings>
+    </Resources>
+  </VersionOverrides>
+</OfficeApp>

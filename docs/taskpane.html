@@ -1,0 +1,44 @@
+<!doctype html>
+<html lang="de">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Kundenkarte</title>
+  <link rel="stylesheet" href="styles.css">
+  <script src="https://appsforoffice.microsoft.com/lib/1/hosted/office.js"></script>
+</head>
+<body>
+  <main class="app">
+    <header class="header">
+      <div>
+        <p class="eyebrow">OrderSP</p>
+        <h1>Kundenkarte</h1>
+      </div>
+      <button id="refreshButton" class="icon-button" type="button" title="Aktualisieren" aria-label="Karte aktualisieren">↻</button>
+    </header>
+
+    <section id="customerCard" class="customer-card" aria-live="polite">
+      <p id="customerCode" class="customer-code">Kundennummer</p>
+      <h2 id="customerName">Kunde auswählen</h2>
+      <p id="customerAddress" class="address">Wähle den Kunden über die vorhandene Kundensuche aus.</p>
+    </section>
+
+    <section class="map-card">
+      <div id="mapState" class="map-state">
+        <div class="spinner" aria-hidden="true"></div>
+        <p>Karte wird geladen …</p>
+      </div>
+      <iframe id="mapFrame" title="Standort des ausgewählten Kunden" loading="lazy" hidden></iframe>
+    </section>
+
+    <div class="actions">
+      <button id="mapsButton" class="primary" type="button" disabled>In Google Maps öffnen</button>
+      <button id="routeButton" class="secondary" type="button" disabled>Route planen</button>
+    </div>
+
+    <p id="status" class="status">Verbindung mit Excel wird hergestellt …</p>
+    <footer>Kartendaten © OpenStreetMap-Mitwirkende</footer>
+  </main>
+  <script src="taskpane.js"></script>
+</body>
+</html>
